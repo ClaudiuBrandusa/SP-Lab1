@@ -1,37 +1,38 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Book {
-    String title;
-    ArrayList<String> content;
+    private String title;
+    private Author author;
+    private Element elements = null;
 
-    public Book(String title)
-    {
+
+    Book(String title){
         this.title = title;
-        content = new ArrayList<String>();
     }
 
-    public void createNewParagraph(String paragraph)
-    {
-        content.add(paragraph);
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "title='" + title + '\'' +
+                '}';
+    }
+    public void addAuthor(Author autor) {
+        this.author = autor;
     }
 
-    public void createNewImage(String image)
-    {
-        content.add(image);
+    public void addContent(Element content) {
+        this.elements = content;
     }
 
-    public void createNewTable(String table)
-    {
-        content.add(table);
-    }
-
-    public void print()
-    {
-        for(String str : content)
-        {
-            System.out.println(str);
+    public void print() {
+        if(this.elements != null) {
+            elements.print();
         }
     }
+
+
 }
