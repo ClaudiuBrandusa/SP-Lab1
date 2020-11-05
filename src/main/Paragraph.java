@@ -12,11 +12,6 @@ public class Paragraph implements Element {
         this.strategy = strategy;
     }
 
-    public String getpText()
-    {
-        return pText;
-    }
-
     @Override
     public String toString() {
         return "Paragraph{" +
@@ -28,7 +23,7 @@ public class Paragraph implements Element {
     public void print() {
         if(strategy != null)
         {
-            strategy.render(this, new Context());
+            strategy.render(this.toString(), new Context());
             return;
         }
         System.out.println(this.toString());

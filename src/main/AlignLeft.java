@@ -3,8 +3,8 @@ package main;
 public class AlignLeft implements AlignStrategy{
 
     @Override
-    public void render(Paragraph paragraph, Context context)
+    public void render(String content, Context context)
     {
-        System.out.println("Align Left:"+paragraph.getpText());
+        System.out.println("Align Left:"+content);
     }
 }
