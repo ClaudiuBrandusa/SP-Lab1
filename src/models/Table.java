@@ -1,15 +1,27 @@
-package main;
+package models;
+
+import models.Context;
+import models.Element;
+import services.AlignStrategy;
 
 public class Table implements Element {
     String table;
     AlignStrategy strategy;
-    Table (String table) {
+    Visitor visitor;
+
+    public Table (String table) {
         this.table = table;
     }
 
     public void setAlignStrategy(AlignStrategy strategy)
     {
         this.strategy = strategy;
+    }
+
+    @Override
+    public void accept(Visitor visitor)
+    {
+        this.visitor = visitor;
     }
 
     @Override

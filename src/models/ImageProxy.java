@@ -1,10 +1,15 @@
-package main;
+package models;
 
-public class ImageProxy implements Element{
+import models.Element;
+import models.Image;
+import services.AlignStrategy;
+
+public class ImageProxy implements Element {
     String url;
     int dim;
     Image realimg;
     AlignStrategy strategy;
+    Visitor visitor;
 
     public ImageProxy(String url)
     {
@@ -24,6 +29,12 @@ public class ImageProxy implements Element{
             realimg.setAlignStrategy(strategy);
         }
         return realimg;
+    }
+
+    @Override
+    public void accept(Visitor visitor)
+    {
+        this.visitor = visitor;
     }
 
     @Override

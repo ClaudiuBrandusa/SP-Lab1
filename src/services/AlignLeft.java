@@ -1,6 +1,8 @@
-package main;
+package services;
 
-public class AlignLeft implements AlignStrategy{
+import models.Context;
+
+public class AlignLeft implements AlignStrategy {
 
     @Override
     public void render(String content, Context context)

@@ -1,11 +1,9 @@
-package main;
+package models;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Book {
+public class Book implements Element {
     private String title;
     private Author author;
+    private Visitor visitor;
     private Element elements = null;
 
 
@@ -28,11 +26,15 @@ public class Book {
         this.elements = content;
     }
 
+    @Override
     public void print() {
         if(this.elements != null) {
             elements.print();
         }
     }
 
-
+    @Override
+    public void accept(Visitor visitor) {
+        this.visitor = visitor;
+    }
 }

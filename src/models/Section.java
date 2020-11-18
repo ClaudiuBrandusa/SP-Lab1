@@ -1,4 +1,6 @@
-package main;
+package models;
+
+import models.Element;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,9 +8,10 @@ import java.util.List;
 public class Section implements Element {
     private String sectionTitle;
     private List<Element> content = new ArrayList<Element>();
+    private Visitor visitor;
 
 
-    Section(String title) {
+    public Section(String title) {
         this.sectionTitle = title;
     }
     public void print() {
@@ -30,5 +33,12 @@ public class Section implements Element {
 
     public Element getElement(int index) {
         return this.content.get(index);
+    }
+
+
+    @Override
+    public void accept(Visitor visitor)
+    {
+        this.visitor = visitor;
     }
 }

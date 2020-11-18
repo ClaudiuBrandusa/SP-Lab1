@@ -1,5 +1,14 @@
 package main;
 
+import models.ImageProxy;
+import models.Paragraph;
+import models.Section;
+import models.Table;
+import services.AlignCenter;
+import services.AlignLeft;
+import services.AlignRight;
+import services.RenderContentVisitor;
+
 public class BookMain {
     public static void main(String[] args) throws Exception {
         Section cap1 = new Section("Capitolul 1");
@@ -17,18 +26,10 @@ public class BookMain {
         cap1.add(img2);
         Table table1 = new Table("first table");
         cap1.add(table1);
-        System.out.println("Printing without Alignment");
-        System.out.println();
-        cap1.print();
-        p1.setAlignStrategy(new AlignCenter());
-        p2.setAlignStrategy(new AlignRight());
-        p3.setAlignStrategy(new AlignLeft());
-        img1.setAlignStrategy(new AlignCenter());
-        img2.setAlignStrategy(new AlignLeft());
-        table1.setAlignStrategy(new AlignRight());
-        System.out.println();
-        System.out.println("Printing with Alignment");
-        System.out.println();
-        cap1.print();
+
+        RenderContentVisitor visitor = new RenderContentVisitor();
+        cap1.accept(visitor);
+        visitor.visit(cap1);
+
     }
 }

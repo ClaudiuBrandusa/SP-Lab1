@@ -1,4 +1,6 @@
-package main;
+package services;
+
+import models.Context;
 
 public class AlignCenter implements AlignStrategy {
 

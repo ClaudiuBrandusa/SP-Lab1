@@ -1,17 +1,16 @@
-package main;
+package models;
 
-import java.util.concurrent.TimeUnit;
+import models.Context;
+import models.Element;
+import services.AlignStrategy;
 
-public class Image implements Element{
-    String image;
+public class Paragraph implements Element {
+    String pText;
     AlignStrategy strategy;
-    Image(String image) {
-        this.image = image;
-        try {
-            TimeUnit.SECONDS.sleep(5);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    Visitor visitor;
+
+    public Paragraph(String text) {
+        this.pText = text;
     }
 
     public void setAlignStrategy(AlignStrategy strategy)
@@ -20,9 +19,15 @@ public class Image implements Element{
     }
 
     @Override
+    public void accept(Visitor visitor)
+    {
+        this.visitor = visitor;
+    }
+
+    @Override
     public String toString() {
-        return "Image{" +
-                "image='" + image + '\'' +
+        return "Paragraph{" +
+                "pText='" + pText + '\'' +
                 '}';
     }
 
